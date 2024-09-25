@@ -2,9 +2,8 @@ import { Day } from "@/types/global";
 import { canvasWrapperId } from "@/constants";
 import { Theme } from "@/styles";
 import { drawMonthlyView } from "./drawMonthlyView";
-import { drawYearlyView } from "./drawYearlyView";
-import { drawHourlyView } from "./drawHourlyView";
 
+//THIS PAGE MANIPULATE THE GRID ( row and column)
 export const drawGrid = (
   ctx: CanvasRenderingContext2D,
   zoom: number,
@@ -18,14 +17,9 @@ export const drawGrid = (
   if (!canvasWrapper) return;
 
   switch (zoom) {
+    //case 0 makes sure each emp has one row, each emp is assigned only 1 shift a day 
     case 0:
-      drawYearlyView(ctx, rows, cols, parsedStartDate, theme);
-      break;
-    case 1:
       drawMonthlyView(ctx, rows, cols, parsedStartDate, theme);
-      break;
-    case 2:
-      drawHourlyView(ctx, rows, cols, parsedStartDate, theme);
       break;
   }
 };
